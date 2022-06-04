@@ -3,7 +3,7 @@
 The program will take a excell workbook and read the FS menu excell workbook and creae json menu objects by meal. 
 Objects will look as follows:
 
-```json
+```
 {
     prep-date: <mm/dd/yyyy>,
     consume-date: <mm/dd/yyy>,
