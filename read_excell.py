@@ -3,22 +3,29 @@ import os
 import argparse
 import openpyxl
 import pandas as pd
+from datetime import datetime
 
 '''
-parses the args and 
+Take consume excel doc.
+add data frame dictionary keyed by day broken by day and meal
 '''
+meal_key = ['']
 def parse(arg):
     location = arg.parse[0]
     #workbook =  openpyxl.load_workbook(location)
     excel_data = pd.read_excel(location, sheet_name='Dinner 5.23')
-    print(excel_data)
-    for sheet in excel_data:
-        print(sheet)
-    # sheet = workbook.active
-    # for i in range(0, sheet.max_row):
-    #     for col in sheet.iter_col(1, sheet.max_column):
-    #         print(col[i].value, end='\t')
-    #     print(' ')
+    #print(excel_data.iloc[0:32])
+    
+    for i in range(0, len(excel_data), 32):
+        print('*************************')
+        data = excel_data.iloc[i:i+32]
+        col_0 = data.iloc[:,0]
+        
+        prep_serve = list(filter(lambda x: type(x) == datetime, col_0))
+        print(prep_serve)
+                
+    print('*******************')
+    
 
 '''
 main arg 
